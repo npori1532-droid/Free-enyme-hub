@@ -8,6 +8,8 @@ export interface Anime {
   description?: string;
   release_date?: string;
   type?: string;
+  members?: string;
+  link?: string;
 }
 
 export interface AnimeState {

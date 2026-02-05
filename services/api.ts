@@ -44,13 +44,20 @@ export const fetchTopAnime = async (): Promise<Anime[]> => {
             genres: item.genres ? (Array.isArray(item.genres) ? item.genres : [item.genres]) : [],
             description: item.synopsis || item.description || 'No description available.',
             type: item.type || 'TV',
-            release_date: item.release || item.release_date
+            release_date: item.release || item.release_date,
+            members: item.members || 'N/A',
+            link: item.link || '#'
         };
     });
 
   } catch (error) {
     console.error("Failed to fetch anime data, using mock data:", error);
     // Fallback to mock data for demo purposes if API fails
-    return MOCK_ANIME_DATA.map(item => ({...item, rank: item.rank, score: item.score}));
+    return MOCK_ANIME_DATA.map(item => ({
+        ...item, 
+        rank: item.rank, 
+        score: item.score,
+        link: item.link || '#'
+    }));
   }
 };

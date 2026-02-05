@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Star, Calendar, Clock, Film } from 'lucide-react';
+import { X, Star, Calendar, Clock, Film, Users, ExternalLink } from 'lucide-react';
 import { Anime } from '../types';
 
 interface AnimeModalProps {
@@ -9,6 +9,12 @@ interface AnimeModalProps {
 
 export const AnimeModal: React.FC<AnimeModalProps> = ({ anime, onClose }) => {
   if (!anime) return null;
+
+  const handleWatchClick = () => {
+    if (anime.link) {
+        window.open(anime.link, '_blank');
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -57,27 +63,39 @@ export const AnimeModal: React.FC<AnimeModalProps> = ({ anime, onClose }) => {
               {anime.description}
             </p>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               <div className="bg-black/30 p-3 rounded-lg border border-white/5">
                 <div className="flex items-center gap-2 text-gray-400 text-xs mb-1">
                   <Calendar className="h-3 w-3" /> Release
                 </div>
-                <div className="text-white font-medium">{anime.release_date || 'N/A'}</div>
+                <div className="text-white font-medium text-sm">{anime.release_date || 'N/A'}</div>
               </div>
               <div className="bg-black/30 p-3 rounded-lg border border-white/5">
                 <div className="flex items-center gap-2 text-gray-400 text-xs mb-1">
                   <Clock className="h-3 w-3" /> Status
                 </div>
-                <div className="text-white font-medium">Finished</div>
+                <div className="text-white font-medium text-sm">Finished</div>
+              </div>
+              <div className="bg-black/30 p-3 rounded-lg border border-white/5">
+                <div className="flex items-center gap-2 text-gray-400 text-xs mb-1">
+                  <Users className="h-3 w-3" /> Members
+                </div>
+                <div className="text-white font-medium text-sm truncate" title={anime.members}>{anime.members || 'N/A'}</div>
               </div>
             </div>
 
             <div className="pt-4 flex gap-4">
-               <button className="flex-1 bg-neon-blue text-black font-bold py-3 rounded-lg hover:bg-cyan-400 transition-colors flex items-center justify-center gap-2">
-                 <Film className="h-5 w-5" /> Watch Episode 1
+               <button 
+                 onClick={handleWatchClick}
+                 className="flex-1 bg-neon-blue text-black font-bold py-3 rounded-lg hover:bg-cyan-400 transition-colors flex items-center justify-center gap-2"
+               >
+                 <Film className="h-5 w-5" /> Watch Stream
                </button>
-               <button className="flex-1 bg-white/10 text-white font-bold py-3 rounded-lg hover:bg-white/20 transition-colors">
-                 Add to List
+               <button 
+                 onClick={handleWatchClick}
+                 className="flex-1 bg-white/10 text-white font-bold py-3 rounded-lg hover:bg-white/20 transition-colors flex items-center justify-center gap-2"
+               >
+                 <ExternalLink className="h-5 w-5" /> Source Info
                </button>
             </div>
           </div>

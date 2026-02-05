@@ -31,6 +31,13 @@ export const AnimeCard: React.FC<AnimeCardProps> = ({ anime, onClick, isFavorite
     setRotate({ x: 0, y: 0 });
   };
 
+  const handleWatchClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (anime.link) {
+      window.open(anime.link, '_blank');
+    }
+  };
+
   return (
     <div
       className="relative group perspective-1000 h-full"
@@ -85,7 +92,10 @@ export const AnimeCard: React.FC<AnimeCardProps> = ({ anime, onClick, isFavorite
           </div>
 
           <div className="flex items-center justify-between mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
-            <button className="flex items-center gap-2 text-sm font-medium text-neon-blue hover:text-white transition-colors">
+            <button 
+              onClick={handleWatchClick}
+              className="flex items-center gap-2 text-sm font-medium text-neon-blue hover:text-white transition-colors"
+            >
               <PlayCircle className="h-5 w-5" />
               Watch Now
             </button>

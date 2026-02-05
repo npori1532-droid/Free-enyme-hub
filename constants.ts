@@ -8,7 +8,9 @@ export const MOCK_ANIME_DATA = [
     score: "9.14",
     genres: ["Adventure", "Fantasy", "Drama"],
     description: "After defeating the Demon King, the elf mage Frieren sets out on a journey to learn about humans.",
-    type: "TV"
+    type: "TV",
+    members: "1,200,000 members",
+    link: "https://myanimelist.net/anime/52991/Sousou_no_Frieren"
   },
   {
     rank: 2,
@@ -17,7 +19,9 @@ export const MOCK_ANIME_DATA = [
     score: "9.09",
     genres: ["Action", "Adventure", "Drama", "Fantasy"],
     description: "Two brothers search for a Philosopher's Stone after an attempt to revive their deceased mother goes wrong.",
-    type: "TV"
+    type: "TV",
+    members: "3,100,000 members",
+    link: "https://myanimelist.net/anime/5114/Fullmetal_Alchemist__Brotherhood"
   },
   {
     rank: 3,
@@ -26,7 +30,9 @@ export const MOCK_ANIME_DATA = [
     score: "9.07",
     genres: ["Sci-Fi", "Thriller"],
     description: "A self-proclaimed mad scientist stumbles upon a conspiracy while experimenting with time travel.",
-    type: "TV"
+    type: "TV",
+    members: "2,400,000 members",
+    link: "https://myanimelist.net/anime/9253/Steins_Gate"
   },
   {
     rank: 4,
@@ -35,7 +41,9 @@ export const MOCK_ANIME_DATA = [
     score: "9.06",
     genres: ["Action", "Comedy", "Sci-Fi"],
     description: "Samurai Gintoki Sakata makes ends meet in a futuristic feudal Japan occupied by aliens.",
-    type: "TV"
+    type: "TV",
+    members: "1,000,000 members",
+    link: "https://myanimelist.net/anime/918/Gintama"
   },
   {
     rank: 5,
@@ -44,6 +52,8 @@ export const MOCK_ANIME_DATA = [
     score: "8.54",
     genres: ["Action", "Drama", "Fantasy"],
     description: "Humanity fights for survival against giant man-eating humanoids known as Titans.",
-    type: "TV"
+    type: "TV",
+    members: "3,700,000 members",
+    link: "https://myanimelist.net/anime/16498/Shingeki_no_Kyojin"
   }
 ];
