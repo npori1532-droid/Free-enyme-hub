@@ -10,25 +10,36 @@ export const fetchTopAnime = async (): Promise<Anime[]> => {
     const data = await response.json();
     
     // The API structure might be an array directly or wrapped in an object.
-    // Based on common scraping APIs, it often returns a list.
-    // We normalize the data here.
-    
     const list = Array.isArray(data) ? data : data.data || [];
     
     // Map to ensure types are consistent
-    return list.map((item: any, index: number) => ({
-        rank: item.rank || index + 1,
-        title: item.title || 'Unknown Title',
-        img: item.img || item.image || 'https://picsum.photos/300/450',
-        score: item.score || 'N/A',
-        genres: item.genres ? (Array.isArray(item.genres) ? item.genres : [item.genres]) : [],
-        description: item.synopsis || item.description || 'No description available.',
-        type: item.type || 'TV'
-    }));
+    return list.map((item: any, index: number) => {
+        // Robust image extraction strategies to handle different API shapes
+        const imageUrl = 
+            item.img || 
+            item.image || 
+            item.thumbnail || 
+            item.poster || 
+            item.images?.jpg?.image_url || 
+            item.images?.webp?.image_url ||
+            item.picture_url ||
+            item.cover ||
+            'https://picsum.photos/300/450'; // Fallback
+
+        return {
+            rank: item.rank || index + 1,
+            title: item.title || 'Unknown Title',
+            img: imageUrl,
+            score: item.score || 'N/A',
+            genres: item.genres ? (Array.isArray(item.genres) ? item.genres : [item.genres]) : [],
+            description: item.synopsis || item.description || 'No description available.',
+            type: item.type || 'TV'
+        };
+    });
 
   } catch (error) {
     console.error("Failed to fetch anime data, using mock data:", error);
-    // Fallback to mock data for demo purposes if API fails (common with public free APIs)
+    // Fallback to mock data for demo purposes if API fails
     return MOCK_ANIME_DATA.map(item => ({...item, rank: item.rank, score: item.score}));
   }
 };

@@ -52,6 +52,10 @@ export const AnimeCard: React.FC<AnimeCardProps> = ({ anime, onClick, isFavorite
             alt={anime.title}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
             loading="lazy"
+            onError={(e) => {
+              // Fallback if the specific image URL is broken
+              e.currentTarget.src = 'https://picsum.photos/300/450';
+            }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90" />
         </div>
