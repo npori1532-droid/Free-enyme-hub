@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://vitejs.dev/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top Anime Hub - Premium Streaming</title>
+    <meta name="description" content="Professional Anime Streaming Platform with 3D Animations" />
+    <meta name="theme-color" content="#0f172a" />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'neon-blue': '#00f3ff',
+              'neon-purple': '#bc13fe',
+              'dark-bg': '#0f172a',
+              'card-bg': '#1e293b',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            animation: {
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            }
+          },
+        },
+      }
+    </script>
+    
+    <!-- PWA Manifest Placeholder -->
+    <link rel="manifest" href="/manifest.json" />
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@react-three/fiber": "https://esm.sh/@react-three/fiber@^9.5.0",
+    "three": "https://esm.sh/three@^0.182.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "@react-three/drei": "https://esm.sh/@react-three/drei@^10.7.7"
+  }
+}
+</script>
+</head>
+  <body class="bg-dark-bg text-white antialiased overflow-x-hidden">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+    
+    <!-- Placeholder for Manifest injection if needed dynamically -->
+    <script>
+      const manifest = {
+        "short_name": "AnimeHub",
+        "name": "Top Anime Hub Premium",
+        "icons": [
+          {
+            "src": "https://picsum.photos/192/192",
+            "type": "image/png",
+            "sizes": "192x192"
+          },
+          {
+            "src": "https://picsum.photos/512/512",
+            "type": "image/png",
+            "sizes": "512x512"
+          }
+        ],
+        "start_url": ".",
+        "display": "standalone",
+        "theme_color": "#0f172a",
+        "background_color": "#0f172a"
+      };
+      const stringManifest = JSON.stringify(manifest);
+      const blob = new Blob([stringManifest], {type: 'application/json'});
+      const manifestURL = URL.createObjectURL(blob);
+      document.querySelector('link[rel="manifest"]').href = manifestURL;
+    </script>
+  </body>
+</html>
